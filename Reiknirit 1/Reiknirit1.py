@@ -14,38 +14,32 @@ def myStemplot(x,y,xl,yl,name):
     plt.grid(True)
     plt.show()
 
-y = np.zeros(15)
-n = np.linspace(-8,6,15)
 
-y[11] = 1
+xmin = -8
+xmax = 6
+length = xmax-xmin+1
 
-print(len(n))
-print(len(y))
-print(n)
-print(y)
+y = np.zeros(length)
+n = np.linspace(xmin,xmax,length)
+
+y[3-xmin] = 1
+
 myStemplot(n,y,'n','y[n]','Reiknirit1')
 
-print(n)
-print(y)
 
 
 x = np.zeros(15)
-x[9] = 1
-x[10] = 1
-x[11] = 1
-x[12] = 1
+x[1-xmin] = 1
+x[2-xmin] = 1
+x[3-xmin] = 1
+x[4-xmin] = 1
 
 myStemplot(n,x,'n','x[n]','Reiknirit1')
 
-print(x[0])
-print(y[0])
-
 z = np.convolve(x,y)
-print(z)
-print(len(z))
-print(z[20])
-
-n = np.linspace(-16,12,29)
+print(n)
+print(len(n))
+n = np.linspace(2*xmin,2*xmax,2*length-1)
 print(n)
 print(len(n))
 
