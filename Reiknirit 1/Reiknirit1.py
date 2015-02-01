@@ -4,27 +4,54 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-n = np.zeros((1,10))
-y = np.linspace(-3,6,10)
-x = -3
+y = np.zeros((1,15))
+n = np.linspace(-8,6,15)
 
-n[0,6] = 1
-# for i in range (0,10):
-# 	n.append(x)
-# 	y.append(0)
-# 	if x is 3:
-# 		y.append(1)
-# 	x = x + 1
+y[0,11] = 1
 
 print(len(n))
-print(len(y))
-
-markerline, stemlines, basline = plt.stem(y,n[0],linefmt = 'b')
+print(len(y[0]))
+print(n)
+print(y)
+markerline, stemlines, basline = plt.stem(n,y[0],linefmt = 'b')
 plt.setp(stemlines, 'linewidth','2.0')
-plt.axis([-5,5,0,2])
+plt.axis([n[0],n[len(n)-1],0,2])
 plt.ylabel('')
 plt.xlabel('n')
 plt.show()
 
 print(n)
 print(y)
+
+
+x = np.zeros((1,15))
+x[0,9] = 1
+x[0,10] = 1
+x[0,11] = 1
+x[0,12] = 1
+
+markerline, stemlines1, basline = plt.stem(n,x[0],linefmt = 'b')
+plt.setp(stemlines1, 'linewidth','2.0')
+plt.axis([n[0],n[len(n)-1],0,2])
+plt.ylabel('')
+plt.xlabel('n')
+plt.show()
+
+print(x[0])
+print(y[0])
+
+z = np.convolve(x[0],y[0])
+print(z)
+print(len(z))
+print(z[20])
+
+n = np.linspace(-15,13,29)
+print(n)
+print(len(n))
+
+markerline, stemlines1, basline = plt.stem(n,z,linefmt = 'b')
+plt.setp(stemlines1, 'linewidth','2.0')
+plt.axis([n[0],n[len(n)-1],0,2])
+plt.ylabel('')
+plt.xlabel('n')
+plt.show()
