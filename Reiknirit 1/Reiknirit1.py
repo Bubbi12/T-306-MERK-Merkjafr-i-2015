@@ -14,6 +14,14 @@ def myStemplot(x,y,xl,yl,name):
     plt.grid(True)
     plt.show()
 
+def boxsignal(VecStart,VecValueStart, VecValueEnd, VecEnd):
+    length = VecEnd-VecStart+1
+    h = np.zeros(length)
+    n = np.linspace(VecStart,VecEnd,length)
+    for i in n:
+        if i >= VecValueStart and i <= VecValueEnd:
+            h[i-VecStart] = 1
+    return h,n
 
 xmin = -8
 xmax = 6
@@ -55,3 +63,13 @@ q[5-xmin] = 0
 
 r = np.convolve(x,q)
 myStemplot(n2,r,'n','z[n]','Reiknirit1')
+
+h,n = boxsignal(-8,1,4,6)
+myStemplot(n,h,'n','h[n]','Reiknirit1')
+
+ramp = np.convolve(h,h)
+# Kassamerki faldað við kassamerki,
+# Til að fá Ramp merki þyrftum við að falda Heaviside merki með öðru Heaviside með engum takmörkunum
+myStemplot(n2,ramp,'n','ramp[n] (h*h)','Reiknirit1')
+
+
