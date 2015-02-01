@@ -45,7 +45,8 @@ print(z)
 print(len(z))
 print(z[20])
 
-n = np.linspace(-15,13,29)
+
+n = np.linspace(-16,12,29)
 print(n)
 print(len(n))
 
