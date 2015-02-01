@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 
 def myStemplot(x,y,xl,yl,name):
     plt.figure(name)
-    markerline, stemlines, baseline = plt.stem(x,y,linefmt = '-.')
-    plt.setp(stemlines, 'linewidth','2.0')
-    plt.setp(baseline, 'color','r', 'linewidth', 2)
-    plt.axis([x[0],x[len(x)-1],-1,10])
+    markerline, stemlines, baseline = plt.stem(x,y,linefmt = '-')
+    plt.setp(stemlines,'color','b', 'linewidth','2.0')
+    #plt.setp(baseline, 'color','r', 'linewidth', 2)
+    plt.axis([x[0],x[len(x)-1],-1,5])
     plt.ylabel(yl)
     plt.xlabel(xl)
     plt.grid(True)
