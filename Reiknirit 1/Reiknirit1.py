@@ -24,8 +24,6 @@ print(n)
 print(y)
 
 
-
-
 x = np.zeros((1,15))
 x[0,9] = 1
 x[0,10] = 1
@@ -46,9 +44,14 @@ z = np.convolve(x[0],y[0])
 print(z)
 print(len(z))
 print(z[20])
-# markerline, stemlines1, basline = plt.stem(n,z[0],linefmt = 'b')
-# plt.setp(stemlines1, 'linewidth','2.0')
-# plt.axis([n[0],n[len(n)-1],0,2])
-# plt.ylabel('')
-# plt.xlabel('n')
-# plt.show()
+
+n = np.linspace(-15,13,29)
+print(n)
+print(len(n))
+
+markerline, stemlines1, basline = plt.stem(n,z,linefmt = 'b')
+plt.setp(stemlines1, 'linewidth','2.0')
+plt.axis([n[0],n[len(n)-1],0,2])
+plt.ylabel('')
+plt.xlabel('n')
+plt.show()
