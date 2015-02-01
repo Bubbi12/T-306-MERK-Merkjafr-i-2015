@@ -22,7 +22,7 @@ def boxsignal(VecStart,VecValueStart, VecValueEnd, VecEnd):
         if i >= VecValueStart and i <= VecValueEnd:
             h[i-VecStart] = 1
     return h,n
-<<<<<<< HEAD
+
 
 
 def myconv(x, nx, h, nh):
@@ -83,8 +83,6 @@ def myconv(x, nx, h, nh):
 
 
 
-=======
->>>>>>> 91b0126509f0a97f2a99ef78465008d387b2b773
 
 xmin = -8
 xmax = 6
