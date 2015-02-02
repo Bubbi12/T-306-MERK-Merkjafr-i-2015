@@ -13,6 +13,16 @@ def myStemplot(x,y,xl,yl,name):
     plt.grid(True)
     plt.show()
 
+
+def boxsignal(VecStart,VecValueStart, VecValueEnd, VecEnd):
+    length = VecEnd-VecStart+1
+    h = np.zeros(length)
+    n = np.arange(VecStart,VecEnd+0.001,0.001)
+    for i in n:
+        if i >= VecValueStart and i <= VecValueEnd:
+            h[i-VecStart] = 1
+    return h,n
+
 def sWF(T1,T,N):
     a0 = (2*T1)/T
     ak = np.zeros(2*N+1)
@@ -27,7 +37,7 @@ def sWF(T1,T,N):
     #print(ak)
     return ak, klist
 
-N = 10
+N = 100
 ak,n = sWF(1,4,N)
 #myStemplot(n,ak,'[n]','ak[n]','Reiknirit 1 part 3')
 ak,n = sWF(1,8,N)
@@ -45,13 +55,18 @@ ak,n = sWF(2,16,N)
 ########################
 T1 = 1
 T = 4
-ak,n = sWF(T1,T,N)
-tt = np.arange(-T/2,T/2,0.001)
-xn = []
-for t in tt:
-    xnt = 0
-    for k in np.arange(-N,N+1,1):
-        xnt += ak[k+N]*np.exp((1j*k*2*np.pi*t)/T)
-    xn.append(xnt)
-print(xn)
-myStemplot(tt,xn,'[n]','ak[n]','Reiknirit 1 part 3')
+NN = [1,3,7,19,79]
+for N in NN:
+    ak,n = sWF(T1,T,N)
+    tt = np.arange(-T/2,T/2+0.001,0.001)
+    xn = []
+    for t in tt:
+        xnt = 0
+        for k in np.arange(-N,N+1,1):
+            xnt += ak[k+N]*np.exp((1j*k*2*np.pi*t)/T)
+        xn.append(xnt)
+    print(xn)
+
+    h,n = boxsignal(-2,-1,1,2)
+    plt.plot(tt,xn)
+    plt.show()

@@ -141,3 +141,4 @@ myStemplot(nZ,Z,'n','y[n]','Reiknirit1', 'z[n] reiknað með heimbrugguðu conv 
 R, nR = myconv(x,n,q,n)
 myStemplot(nR,R,'n','y[n]','Reiknirit1', 'r[n] reiknað með heimbrugguðu conv fallinu')
 
+ 
