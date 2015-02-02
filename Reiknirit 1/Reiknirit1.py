@@ -3,7 +3,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def myStemplot(x,y,xl,yl,name):
+def myStemplot(x,y,xl,yl,name,title = 'No Title'):
     plt.figure(name)
     markerline, stemlines, baseline = plt.stem(x,y,linefmt = '-')
     plt.setp(stemlines,'color','b', 'linewidth','2.0')
@@ -11,6 +11,7 @@ def myStemplot(x,y,xl,yl,name):
     plt.axis([x[0],x[len(x)-1],-1,5])
     plt.ylabel(yl)
     plt.xlabel(xl)
+    plt.title(title)
     plt.grid(True)
     plt.show()
 
@@ -94,7 +95,7 @@ n2 = np.linspace(2*xmin,2*xmax,2*length-1)
 
 y[3-xmin] = 1
 
-myStemplot(n,y,'n','y[n]','Reiknirit1')
+myStemplot(n,y,'n','y[n]','Reiknirit1', 'Liður 1: DeltaDir[n-3]')
 
 
 
@@ -104,7 +105,7 @@ x[2-xmin] = 1
 x[3-xmin] = 1
 x[4-xmin] = 1
 
-myStemplot(n,x,'n','x[n]','Reiknirit1')
+myStemplot(n,x,'n','x[n]','Reiknirit1', 'Liður 2: Kassafallið')
 
 z = np.convolve(x,y)
 print(n)
@@ -113,7 +114,7 @@ print(len(n))
 print(n2)
 print(len(n2))
 
-myStemplot(n2,z,'n','z[n]','Reiknirit1')
+myStemplot(n2,z,'n','z[n]','Reiknirit1', 'Liður 4: z[n] = y[n] * x[n]')
 
 q = np.zeros(length)
 q[1-xmin] = 0
@@ -123,21 +124,21 @@ q[4-xmin] = 1
 q[5-xmin] = 0
 
 r = np.convolve(x,q)
-myStemplot(n2,r,'n','z[n]','Reiknirit1')
+myStemplot(n2,r,'n','z[n]','Reiknirit1','Liður 7: r[n] = x[n] * q[n]')
 
 h,n = boxsignal(-8,1,4,6)
-myStemplot(n,h,'n','h[n]','Reiknirit1')
+myStemplot(n,h,'n','h[n]','Reiknirit1', 'Kassafallið fyrir lið 10')
 
 ramp = np.convolve(h,h)
 # Kassamerki faldað við kassamerki,
 # Til að fá Ramp merki þyrftum við að falda Heaviside merki með öðru Heaviside með engum takmörkunum
-myStemplot(n2,ramp,'n','ramp[n] (h*h)','Reiknirit1')
+myStemplot(n2,ramp,'n','ramp[n] (h*h)','Reiknirit1', ' Liður 10: Ramp Merki')
 
 Z, nZ = myconv(x,n,y,n)
-myStemplot(nZ,Z,'n','y[n]','Reiknirit1')
+myStemplot(nZ,Z,'n','y[n]','Reiknirit1', 'z[n] reiknað með heimbrugguðu conv fallinu')
 
 
 R, nR = myconv(x,n,q,n)
-myStemplot(nR,R,'n','y[n]','Reiknirit1')
+myStemplot(nR,R,'n','y[n]','Reiknirit1', 'r[n] reiknað með heimbrugguðu conv fallinu')
 
  
