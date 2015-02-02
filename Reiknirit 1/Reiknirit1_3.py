@@ -56,17 +56,51 @@ ak,n = sWF(2,16,N)
 T1 = 1
 T = 4
 NN = [1,3,7,19,79]
-for N in NN:
+tt = np.arange(-T/2,T/2+0.001,0.001)
+bs = np.zeros(len(tt))
+for i,val in enumerate(bs):
+    if i>=1/0.001 and i <=3/0.001:
+        bs[i]=1
+
+
+
+
+"""for N in NN:
     ak,n = sWF(T1,T,N)
-    tt = np.arange(-T/2,T/2+0.001,0.001)
     xn = []
-    for t in tt:
+    En = []
+    for i, t in enumerate(tt):
         xnt = 0
         for k in np.arange(-N,N+1,1):
-            xnt += ak[k+N]*np.exp((1j*k*2*np.pi*t)/T)
+            xnt += np.real(ak[k+N]*np.exp((1j*k*2*np.pi*t)/T))
         xn.append(xnt)
-    print(xn)
+        En.append(bs[i]-xnt)
 
     h,n = boxsignal(-2,-1,1,2)
     plt.plot(tt,xn)
-    plt.show()
+    plt.plot(tt,bs)
+    plt.plot(tt,En)
+    plt.show()"""
+
+# Liður 3
+# Fáum tvinngilt merki fyrir xN(t) vegna þess að við umskrifuðum fallið okkar með reglu Eulers svo fourier stuðlarnir sem komu út úr squareWaveFourier gefa okkur tvinngilt
+# svar þegar við umskrifum til baka. Ímynduðu liðirnir styttast hinsvegar út þegar summað er frá -N til N
+
+NN = np.arange(10,100+10,10)
+EN = []
+print(NN)
+for N in NN:
+    ak,n = sWF(T1,T,N)
+    xn = []
+    En = []
+    for i, t in enumerate(tt):
+        xnt = 0
+        for k in np.arange(-N,N+1,1):
+            xnt += np.real(ak[k+N]*np.exp((1j*k*2*np.pi*t)/T))
+        xn.append(xnt)
+        En.append((bs[i]-xnt)**2)
+    EN.append(np.sum(En))
+    print('for N = %i, En = %.6f'%(N,np.sum(En)))
+
+plt.plot(NN,EN)
+plt.show()
