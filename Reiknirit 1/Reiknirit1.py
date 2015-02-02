@@ -73,3 +73,4 @@ ramp = np.convolve(h,h)
 myStemplot(n2,ramp,'n','ramp[n] (h*h)','Reiknirit1')
 
 
+ 
