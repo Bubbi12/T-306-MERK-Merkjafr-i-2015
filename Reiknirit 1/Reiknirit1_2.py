@@ -20,6 +20,7 @@ def boxsignal(VecStart,VecValueStart, VecValueEnd, VecEnd):
     for i in n:
         if i >= VecValueStart and i <= VecValueEnd:
             h[i-VecStart] = 1
+    print(n)
     return h,n
 
 def myStemplot(x,y,xl,yl,name):
@@ -32,8 +33,8 @@ def myStemplot(x,y,xl,yl,name):
     plt.grid(True)
     plt.show()
 
-xmin = -8
-xmax = 6
+xmin = -20
+xmax = 20
 length = xmax-xmin+1
 n = np.linspace(xmin,xmax,length)
 
@@ -50,7 +51,7 @@ def compare(h):
     n3 = np.linspace(np.min(n),np.max(n),len(h))
     myStemplot(n3,fft,'n','h[n]','Reiknirit1')
 
-h,n = boxsignal(-8,1,4,6)
+h,n = boxsignal(-20,-10,10,20)
 myStemplot(n,h,'n','h[n]','Reiknirit1')
 compare(h)
 

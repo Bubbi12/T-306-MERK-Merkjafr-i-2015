@@ -65,7 +65,7 @@ for i,val in enumerate(bs):
 
 
 
-"""for N in NN:
+for N in NN:
     ak,n = sWF(T1,T,N)
     xn = []
     En = []
@@ -80,7 +80,7 @@ for i,val in enumerate(bs):
     plt.plot(tt,xn)
     plt.plot(tt,bs)
     plt.plot(tt,En)
-    plt.show()"""
+    plt.show()
 
 # Liður 3
 # Fáum tvinngilt merki fyrir xN(t) vegna þess að við umskrifuðum fallið okkar með reglu Eulers svo fourier stuðlarnir sem komu út úr squareWaveFourier gefa okkur tvinngilt
