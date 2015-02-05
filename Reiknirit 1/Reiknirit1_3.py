@@ -39,13 +39,13 @@ def sWF(T1,T,N):
 
 N = 100
 ak,n = sWF(1,4,N)
-#myStemplot(n,ak,'[n]','ak[n]','Reiknirit 1 part 3')
+myStemplot(n,ak,'[n]','ak[n]','Reiknirit 1 part 3')
 ak,n = sWF(1,8,N)
-#myStemplot(n,ak,'[n]','ak[n]','Reiknirit 1 part 3')
+myStemplot(n,ak,'[n]','ak[n]','Reiknirit 1 part 3')
 ak,n = sWF(1,16,N)
-#myStemplot(n,ak,'[n]','ak[n]','Reiknirit 1 part 3')
+myStemplot(n,ak,'[n]','ak[n]','Reiknirit 1 part 3')
 ak,n = sWF(2,16,N)
-#myStemplot(n,ak,'[n]','ak[n]','Reiknirit 1 part 3')
+myStemplot(n,ak,'[n]','ak[n]','Reiknirit 1 part 3')
 
 
 
