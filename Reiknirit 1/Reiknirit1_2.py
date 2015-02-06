@@ -63,7 +63,7 @@ def compare(h,n):
     
     #print('\nMy real dft of length %i:\n'%len(dft),np.real(dft))
     print('\nMy fft of length %i:\n'%len(fft),fft)
-    dft = fft
+    #dft = fft
 
     dft_Real = []
     dft_Im = []
