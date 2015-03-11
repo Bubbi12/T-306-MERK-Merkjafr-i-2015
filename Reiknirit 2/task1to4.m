@@ -32,13 +32,13 @@ stem(n,xn)
 
 figure
 subplot(3,1,1)
-stem(n,abs(fft(xn1)))
+stem(n,abs(fftshift(fft(xn1))))
 
 subplot(3,1,2)
-stem(n,abs(fft(xn2)))
+stem(n,abs(fftshift(fft(xn2))))
 
 subplot(3,1,3)
-stem(n,abs(fft(xn3)))
+stem(n,abs(fftshift(fft(xn3))))
 
 end
 

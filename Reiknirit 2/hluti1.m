@@ -2,7 +2,7 @@ clear all; close all; clc
 % --------- Uppsetning ---------
 
 A = [1 1 1];        % [A1 A2 A3] útslag
-f = [300 730 1500]; % [f1 f2 f3] tíðni, Hz
+
 fasi = [0 0 0];     % Fasar 1 til 3
 
 fs = 8000; %Söfnunartíðni skilgreind sem 8000 Hz
@@ -11,6 +11,7 @@ n = -400:1:400;
 t = n/fs;% = n*Ts
 
 %% --------- Liður 1 - 4 ---------
+f = [300 730 1500]; % [f1 f2 f3] tíðni, Hz
 
 xn1 =  A(1)*sin(2*pi*f(1)*t + fasi(1));  
 xn2 =  A(2)*sin(2*pi*f(2)*t + fasi(2));  
