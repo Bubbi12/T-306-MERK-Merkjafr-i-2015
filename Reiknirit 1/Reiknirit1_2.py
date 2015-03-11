@@ -11,7 +11,7 @@ def myDFT(x):
         Fk = 0
         for n,val in enumerate(x):
 
-            Fk += x[n] * np.exp(1j*2*np.pi*k*n/N) # It dosnt matter if we have -J og +J 
+            Fk += x[n] * np.exp(1j*2*np.pi*k*n/N)/N # It dosnt matter if we have -J og +J 
         F.append(Fk)
     return F
 
@@ -43,11 +43,12 @@ def compare(h,n, title):
     dft = myDFT(h)
     fft = np.fft.fft(h)
     
+
     df_Fourier = pd.DataFrame({'Values from myDFT function':dft, 'Values from fft function':fft})
 
     print(df_Fourier)
 
-    dft = fft
+    #dft = fft
 
     dft_Real = []
     dft_Im = []
@@ -62,10 +63,10 @@ def compare(h,n, title):
         dft_Im.append(np.imag(dft[i]))
         dft_Abs.append(np.absolute(dft[i]))
         dft_Ang.append(np.angle(dft[i]))
-        fft_Real.append(np.real(dft[i]))
-        fft_Im.append(np.imag(dft[i]))
-        fft_Abs.append(np.absolute(dft[i]))
-        fft_Ang.append(np.angle(dft[i]))
+        fft_Real.append(np.real(fft[i]))
+        fft_Im.append(np.imag(fft[i]))
+        fft_Abs.append(np.absolute(fft[i]))
+        fft_Ang.append(np.angle(fft[i]))
 
     df_Fourier_Real = pd.DataFrame({'Real Values from myDFT':dft_Real, 'Real Value from fft':fft_Real})
 

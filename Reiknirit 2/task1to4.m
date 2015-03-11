@@ -1,15 +1,25 @@
 function  task1to4(fs,n,xn1,xn2,xn3)
 
 % --------- Liður 1. ---------
-
+figure('name','Liður 1','NumberTitle','off')
 subplot(3,1,1)
 stem(n,xn1)
+title('x1[n]');
+xlabel('Stak [n]');
+ylabel('Útslag');
 
 subplot(3,1,2)
 stem(n,xn2)
+title('x2[n]');
+xlabel('Stak [n]');
+ylabel('Útslag');
 
 subplot(3,1,3)
 stem(n,xn3)
+title('x3[n]');
+xlabel('Stak [n]');
+ylabel('Útslag');
+
 
 % --------- Liður 2. ---------
 
@@ -21,16 +31,21 @@ pause(p)
 soundsc(xn3,fs)
 pause(p)
 
+waitforbuttonpress;
+
 % --------- Liður 3. ---------
 
 xn = xn1 + xn2 + xn3;
 soundsc(xn,fs)
-figure
+figure('name','Liður 3','NumberTitle','off')
 stem(n,xn)
+title('x[n] = x1[n] + x2[n] + x3[n]');
+xlabel('Stak [n]');
+ylabel('Útslag');
 
 % --------- Liður 4. ---------
 
-figure
+figure('name','Liður 4: Fourier vörpun merkjanna','NumberTitle','off')
 subplot(3,1,1)
 stem(n,abs(fftshift(fft(xn1))))
 
@@ -40,5 +55,21 @@ stem(n,abs(fftshift(fft(xn2))))
 subplot(3,1,3)
 stem(n,abs(fftshift(fft(xn3))))
 
+stem(n,abs(fft(xn1)))
+title('F[x1]');
+xlabel('ak');
+ylabel('Gildi');
+
+subplot(3,1,2)
+stem(n,abs(fft(xn2)))
+title('F[x2]');
+xlabel('ak');
+ylabel('Gildi');
+
+subplot(3,1,3)
+stem(n,abs(fft(xn3)))
+title('F[x3]');
+xlabel('ak');
+ylabel('Gildi');
 end
 
