@@ -18,11 +18,25 @@ xn3 =  A(3)*sin(2*pi*f(3)*t + fasi(3));
 
 task1to4(fs,n,xn1,xn2,xn3);
 
-
  
 %% --------- Liður 5. ---------
 
 f = [2500 3500 5500]; % [f1 f2 f3] tíðni, Hz
+
+xn1 =  A(1)*sin(2*pi*f(1)*t + fasi(1)); 
+xn2 =  A(2)*sin(2*pi*f(2)*t + fasi(2));  
+xn3 =  A(3)*sin(2*pi*f(3)*t + fasi(3));  
+
+task1to4(fs,n,xn1,xn2,xn3);
+
+%% --------- Liður 6. ---------
+
+%Eigum að ákvarða Nyquist tíðni
+
+Nyquistfreq = fs/2;
+
+%% --------- Liður 7. ---------
+f = [7000 7500 7900]; % [f1 f2 f3] tíðni, Hz
 
 xn1 =  A(1)*sin(2*pi*f(1)*t + fasi(1)); 
 xn2 =  A(2)*sin(2*pi*f(2)*t + fasi(2));  

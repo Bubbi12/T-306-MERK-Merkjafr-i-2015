@@ -30,6 +30,7 @@ stem(n,xn)
 
 % --------- Liður 4. ---------
 
+figure
 subplot(3,1,1)
 stem(n,abs(fft(xn1)))
 
