@@ -43,3 +43,4 @@ xn2 =  A(2)*sin(2*pi*f(2)*t + fasi(2));
 xn3 =  A(3)*sin(2*pi*f(3)*t + fasi(3));  
 
 task1to4(fs,n,xn1,xn2,xn3);
+
