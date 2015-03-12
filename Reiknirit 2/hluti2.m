@@ -76,23 +76,21 @@ fc=3000;%Cut-offfrequency
   
   figure
   subplot(2,1,1)
-  
-  plot(1:i,sp(1:i));
+  plot((0:length(sp)-1)/(winlen/fs),20*log10(abs(sp)));
   hold on;
   
   IIR = filter(b1,a1,sp);
-  %   soundsc(IIR,fs)
-  plot(1:i,IIR(1:i),'r')
-  axis([0 i -A A ]);
+  plot((0:length(sp)-1)/(winlen/fs),20*log10(abs(IIR)),'r')
+
   
   subplot(2,1,2)
-  plot(1:i,sp(1:i));
+  plot((0:length(sp)-1)/(winlen/fs),20*log10(abs(sp)));
   hold on;
   
   FIR = filter(b2,a2,sp);
-%   soundsc(FIR,fs)
-  plot(1:length(FIR),FIR,'r')
-    axis([0 i -A A ]);
+% %   soundsc(FIR,fs)
+  plot((0:length(sp)-1)/(winlen/fs),20*log10(abs(FIR)),'r')
+%     axis([0 i -A A ]);
 
   
   
