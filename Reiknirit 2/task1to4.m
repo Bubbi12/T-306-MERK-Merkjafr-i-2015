@@ -48,7 +48,7 @@ ylabel('Útslag');
 figure('name','Liður 4: Fourier vörpun merkjanna','NumberTitle','off')
 lenn = length(n);
 subplot(3,1,1)
-stem((0:lenn-1)/(lenn/fs),20*log10(abs(fft(xn1))));
+stem((0:lenn-1)/(lenn/fs),20*log10((fft(xn1))));
 title('F[x1]');
 xlabel('ak');
 ylabel('Gildi');

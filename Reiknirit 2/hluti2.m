@@ -32,7 +32,9 @@ fc=3000;%Cut-offfrequency
  b2=fir2(N2,f,m); a2=1;
 
  % ----------- Tíðnisvaranir síanna 2.2 -----------
- 
+ figure
+ % ----------- Freq response 2.2 -----------
+ subplot(2,1,1)
  nfft=1024;
  [H1,w1]=freqz(b1,a1,nfft);
  [H2,w2]=freqz(b2,a2,nfft);
@@ -43,6 +45,18 @@ fc=3000;%Cut-offfrequency
  legend('H','H2');
  xlabel('Tíðni[Hz]')
  ylabel('Útslag[dB]')
+  % ----------- Phase response 2.2 -----------
+ subplot(2,1,2)
+ [phiFIR,w1_p] = phasez(b1,a1,nfft); 
+ [phiIIR,w2_p] = phasez(b2,a2,nfft); 
+ 
+ plot(fs*w1_p/(2*pi),unwrap(phiFIR),'b');
+ hold on
+ plot(fs*w2_p/(2*pi),unwrap(phiIIR),'r');
+ legend('H','H2');
+ xlabel('Tíðni[Hz]')
+ ylabel('Radíanar')
+ grid on
  
  % ----------- Impúls síanna 2.2 -----------
  
@@ -57,24 +71,28 @@ fc=3000;%Cut-offfrequency
  legend('h1','h2');
  
   %% ----------- síun  2.3 -----------
+  i = 200;
+  A = 30;
+  
   figure
   subplot(2,1,1)
-  plot(1:length(sp),sp);
+  
+  plot(1:i,sp(1:i));
   hold on;
   
-  spnew1 = filter(b1,a1,sp);
-  %   soundsc(spnew1,fs)
-  plot(1:length(spnew1),spnew1,'r')
-  axis([0 1500 -10 10 ]);
+  IIR = filter(b1,a1,sp);
+  %   soundsc(IIR,fs)
+  plot(1:i,IIR(1:i),'r')
+  axis([0 i -A A ]);
   
   subplot(2,1,2)
-  plot(1:length(sp),sp);
+  plot(1:i,sp(1:i));
   hold on;
   
-  spnew2 = filter(b2,a2,sp);
-%   soundsc(spnew2,fs)
-  plot(1:length(spnew2),spnew2,'r')
-    axis([0 1500 -10 10 ]);
+  FIR = filter(b2,a2,sp);
+%   soundsc(FIR,fs)
+  plot(1:length(FIR),FIR,'r')
+    axis([0 i -A A ]);
 
   
   
