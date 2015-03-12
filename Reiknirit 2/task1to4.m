@@ -46,21 +46,21 @@ ylabel('Útslag');
 % --------- Liður 4. ---------
 
 figure('name','Liður 4: Fourier vörpun merkjanna','NumberTitle','off')
-
+lenn = length(n);
 subplot(3,1,1)
-stem(n,abs(fftshift(fft(xn1))))
+stem((0:lenn-1)/(lenn/fs),20*log10(abs(fft(xn1))));
 title('F[x1]');
 xlabel('ak');
 ylabel('Gildi');
 
 subplot(3,1,2)
-stem(n,abs(fftshift(fft(xn2))))
+stem((0:lenn-1)/(lenn/fs),20*log10(abs(fft(xn2))));
 title('F[x2]');
 xlabel('ak');
 ylabel('Gildi');
 
 subplot(3,1,3)
-stem(n,abs(fftshift(fft(xn3))))
+stem((0:lenn-1)/(lenn/fs),20*log10(abs(fft(xn3))));
 title('F[x3]');
 xlabel('ak');
 ylabel('Gildi');
