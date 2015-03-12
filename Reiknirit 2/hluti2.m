@@ -11,7 +11,8 @@ winlen=1024;%ca23ms@fs=44100
 nn=(1:winlen)+nshift;%Tímaindexbúinntil 
 ak=fft(sp(nn)); 
 plot((0:winlen-1)/(winlen/fs),20*log10(abs(ak)));
-
+xlabel('Tíðni[Hz]')
+ylabel('Útslag[dB]')
 %% ----------- Hönnun sía 2.2 -----------
 
 % ----------- IIR 2.2 -----------
@@ -19,15 +20,15 @@ plot((0:winlen-1)/(winlen/fs),20*log10(abs(ak)));
 fnyq=fs/2;%Nyquistfrequency 
 Rp=0.3;%Maximumrippleinthepassband 
 Rs=60;%Maximumrippleinthestopband 
-N1=4;%Degreeoffilter 
+N1=4;%Degreeoffiler 
 fc=3000;%Cut-offfrequency
 [b1,a1]=ellip(N1,Rp,Rs,fc/fnyq,'low');
 
-% ----------- IIR 2.2 -----------
+% ----------- FIR 2.2 -----------
 
  f=[0 fc fc fnyq]/fnyq;
  m=[1 1 0 0];
- N2=60;%Degreeoffilter 
+ N2=60; %Degreeoffilter 
  b2=fir2(N2,f,m); a2=1;
 
  % ----------- Tíðnisvaranir síanna 2.2 -----------
@@ -45,6 +46,7 @@ fc=3000;%Cut-offfrequency
  
  % ----------- Impúls síanna 2.2 -----------
  
+ figure
  d=zeros(1,120);
  d(1)=1;
  h1=filter(b1,a1,d);
@@ -53,4 +55,31 @@ fc=3000;%Cut-offfrequency
  hold on;
  plot(h2,'r');
  legend('h1','h2');
+ 
+  %% ----------- síun  2.3 -----------
+  figure
+  subplot(2,1,1)
+  plot(1:length(sp),sp);
+  hold on;
+  
+  spnew1 = filter(b1,a1,sp);
+  %   soundsc(spnew1,fs)
+  plot(1:length(spnew1),spnew1,'r')
+  axis([0 1500 -10 10 ]);
+  
+  subplot(2,1,2)
+  plot(1:length(sp),sp);
+  hold on;
+  
+  spnew2 = filter(b2,a2,sp);
+%   soundsc(spnew2,fs)
+  plot(1:length(spnew2),spnew2,'r')
+    axis([0 1500 -10 10 ]);
+
+  
+  
+  
+  
+  
+  
  
