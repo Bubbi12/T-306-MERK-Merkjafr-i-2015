@@ -52,6 +52,8 @@ stem((0:lenn-1)/(lenn/fs),20*log10(abs(fft(xn1))));
 title('F[x1]');
 xlabel('ak');
 ylabel('Gildi');
+hold on
+
 
 subplot(3,1,2)
 stem((0:lenn-1)/(lenn/fs),20*log10(abs(fft(xn2))));

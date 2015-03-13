@@ -20,7 +20,7 @@ ylabel('Útslag[dB]')
 
 fnyq=fs/2;%Nyquistfrequency 
 Rp=0.3;%Maximumrippleinthepassband 
-Rs=60;%Maximumrippleinthestopband upprunaleg 60
+Rs=80;%Maximumrippleinthestopband upprunaleg 60
 N1=8;%Degreeoffiler  uppr 4
 fc=3000;%Cut-offfrequency
 [b1,a1]=ellip(N1,Rp,Rs,fc/fnyq,'low');
@@ -75,23 +75,27 @@ fc=3000;%Cut-offfrequency
   figure
   subplot(3,1,1)
   hold on;
-  soundsc(IIR,fs)
+  
   IIR = filter(b1,a1,sp);
-  plot((0:length(sp)-1)/(fs),IIR,'r')
+  plot((0:length(sp)-1)/(fs),IIR,'r')  
   
   subplot(3,1,2)
   hold on;
   
   FIR = filter(b2,a2,sp);
-   soundsc(FIR,fs)
+  soundsc(FIR,fs)
+  
   plot((0:length(sp)-1)/(fs),FIR,'r')
 
   subplot(3,1,3)
-   plot((0:length(sp)-1)/(fs),(sp));
+  plot((0:length(sp)-1)/(fs),(sp));
   
   
+  hlusta(IIR,1,fs)
   
+  pause(1)
   
+  hlusta(FIR,2,fs)
   
   
   
