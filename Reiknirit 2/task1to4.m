@@ -50,19 +50,19 @@ lenn = length(n);
 subplot(3,1,1)
 stem((0:lenn-1)/(lenn/fs),20*log10(abs(fft(xn1))));
 title('F[x1]');
-xlabel('ak');
+xlabel('Tíðni [Hz]');
 ylabel('Gildi');
 
 subplot(3,1,2)
 stem((0:lenn-1)/(lenn/fs),20*log10(abs(fft(xn2))));
 title('F[x2]');
-xlabel('ak');
+xlabel('Tíðni [Hz]');
 ylabel('Gildi');
 
 subplot(3,1,3)
 stem((0:lenn-1)/(lenn/fs),20*log10(abs(fft(xn3))));
 title('F[x3]');
-xlabel('ak');
+xlabel('Tíðni [Hz]');
 ylabel('Gildi');
 end
 

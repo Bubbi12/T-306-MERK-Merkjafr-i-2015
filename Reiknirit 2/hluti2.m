@@ -71,23 +71,32 @@ fc=3000;%Cut-offfrequency
  plot(h2,'r');
  legend('h1','h2');
  
-  % ----------- síun  2.3 -----------
+  %% ----------- síun  2.3 -----------
   figure
   subplot(3,1,1)
-  hold on;
-  soundsc(IIR,fs)
-  IIR = filter(b1,a1,sp);
-  plot((0:length(sp)-1)/(fs),IIR,'r')
   
+  IIR = filter(b1,a1,sp);
+  soundsc(IIR,fs)
+  plot((0:length(sp)-1)/(fs),IIR,'r')
+  title('IIR filter');
+  xlabel('Tími [s]');
+  ylabel('Útslag');
+
   subplot(3,1,2)
-  hold on;
   
   FIR = filter(b2,a2,sp);
-   soundsc(FIR,fs)
+  soundsc(FIR,fs)
   plot((0:length(sp)-1)/(fs),FIR,'r')
+  title('FIR filter');
+  xlabel('Tími [s]');
+  ylabel('Útslag');
 
   subplot(3,1,3)
-   plot((0:length(sp)-1)/(fs),(sp));
+  
+  plot((0:length(sp)-1)/(fs),(sp));
+  title('Upprunalega merkið');
+  xlabel('Tími [s]');
+  ylabel('Útslag');
   
   
   
