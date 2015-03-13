@@ -13,14 +13,15 @@ ak=fft(sp(nn));
 plot((0:winlen-1)/(winlen/fs),20*log10(abs(ak)));
 xlabel('Tíðni[Hz]')
 ylabel('Útslag[dB]')
+
 %% ----------- Hönnun sía 2.2 -----------
 
 % ----------- IIR 2.2 -----------
 
 fnyq=fs/2;%Nyquistfrequency 
 Rp=0.3;%Maximumrippleinthepassband 
-Rs=60;%Maximumrippleinthestopband 
-N1=4;%Degreeoffiler 
+Rs=60;%Maximumrippleinthestopband upprunaleg 60
+N1=8;%Degreeoffiler  uppr 4
 fc=3000;%Cut-offfrequency
 [b1,a1]=ellip(N1,Rp,Rs,fc/fnyq,'low');
 
@@ -70,28 +71,24 @@ fc=3000;%Cut-offfrequency
  plot(h2,'r');
  legend('h1','h2');
  
-  %% ----------- síun  2.3 -----------
-  i = 200;
-  A = 30;
-  
+  % ----------- síun  2.3 -----------
   figure
-  subplot(2,1,1)
-  plot((0:length(sp)-1)/(winlen/fs),20*log10(abs(sp)));
+  subplot(3,1,1)
   hold on;
-  
+  soundsc(IIR,fs)
   IIR = filter(b1,a1,sp);
-  plot((0:length(sp)-1)/(winlen/fs),20*log10(abs(IIR)),'r')
-
+  plot((0:length(sp)-1)/(fs),IIR,'r')
   
-  subplot(2,1,2)
-  plot((0:length(sp)-1)/(winlen/fs),20*log10(abs(sp)));
+  subplot(3,1,2)
   hold on;
   
   FIR = filter(b2,a2,sp);
-% %   soundsc(FIR,fs)
-  plot((0:length(sp)-1)/(winlen/fs),20*log10(abs(FIR)),'r')
-%     axis([0 i -A A ]);
+   soundsc(FIR,fs)
+  plot((0:length(sp)-1)/(fs),FIR,'r')
 
+  subplot(3,1,3)
+   plot((0:length(sp)-1)/(fs),(sp));
+  
   
   
   
