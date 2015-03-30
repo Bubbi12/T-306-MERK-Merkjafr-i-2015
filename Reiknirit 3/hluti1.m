@@ -56,13 +56,13 @@ title('Pole-zero plot for the IIR low-pass filter');
 legend('Zeros','Poles','Unit circle');
 grid on;
 
-% ----------- Determine Roots for IIR -----------
-z1 = roots(b2); %Núll H2(z)
-p1 = roots(a2); %Skaut H2(z)
+% ----------- Determine Roots for FIR -----------
+z2 = roots(b2); %Núll H2(z)
+p2 = roots(a2); %Skaut H2(z)
 ucirc = exp(1j*(0:0.001:(2*pi))); % Einingahringurinn
 figure
-plot(real(z1),imag(z1),'or','linewidth',2,'markersize',10); hold on;
-% plot(real(p1),imag(p1),'xb','linewidth',2,'markersize',10);
+plot(real(z2),imag(z2),'or','linewidth',2,'markersize',10); hold on;
+%close all; plot(real(p2),imag(p1),'xb','linewidth',2,'markersize',10);
 plot(real(ucirc), imag(ucirc),'k--','linewidth',2);
 axis([-1.5 5 -1 1])
 axis equal
@@ -70,4 +70,34 @@ xlabel('Real part');
 ylabel('Imaginary part');
 title('Pole-zero plot for the FIR filter');
 legend('Zeros','Unit circle');
+grid on;
+
+
+%% Umræða
+% Hefur H2(z) skaut? 
+%   Nei? H2z er allavega zero vigur
+
+% Túlkið myndirnar með með tilliti til umræðu í ka?a 10.4.
+% Berið saman útslag og horn núllanna og skautanna við einingahringinn og
+% tilgreinið (og teiknið) cut- o? tíðni síanna á einingahringnum. 
+
+% Hvernig ná núllin og skautin að hjálpa til við að ná fram lághleypisíun?
+
+% Hvernig væru núllin og skautin staðsett ef við værum með 
+% bandhleypisíu eða háhleypisíu?
+%IIR HIGHPASS
+[b1,a1]=ellip(N1,Rp,Rs,fc/fnyq,'high');
+z1 = roots(b1); %Núll H1(z)
+p1 = roots(a1); %Skaut H1(z)
+ucirc = exp(1j*(0:0.001:(2*pi))); % Einingahringurinn
+figure
+plot(real(z1),imag(z1),'or','linewidth',2,'markersize',10); hold on;
+plot(real(p1),imag(p1),'xb','linewidth',2,'markersize',10);
+plot(real(ucirc), imag(ucirc),'k--','linewidth',2);
+axis(1.3*[-1 1 -1 1])
+axis equal
+xlabel('Real part');
+ylabel('Imaginary part');
+title('Pole-zero plot for the IIR high-pass filter');
+legend('Zeros','Poles','Unit circle');
 grid on;
