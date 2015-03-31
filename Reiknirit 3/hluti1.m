@@ -16,27 +16,36 @@ b2=fir2(N2,f,m);
 a2=1;
 
 % ----------- Freq response -----------
+
+% Næstu fjórar línur virka líka sem plott en þá fáum við engin gögn og
+% getum þá ekki bætt neinu við plottin
+% ----------------------------
+    % figure('name','IIR sían - Freq response')
+    % freqz(b1,a1)
+    % figure('name','FIR sían - Freq response')
+    % freqz(b2,a2)
+% ----------------------------
+
 subplot(2,1,1)
-nfft=1024;
-[H1,w1]=freqz(b1,a1,nfft);
-[H2,w2]=freqz(b2,a2,nfft);
-plot(fs*w1/(2*pi),20*log10(abs(H1)),'b');
+[H1,w1]=freqz(b1,a1);
+[H2,w2]=freqz(b2,a2);
+plot(w1/pi,20*log10(abs(H1)),'b');
 hold on;
-plot(fs*w2/(2*pi),20*log10(abs(H2)),'r');
+plot(w2/pi,20*log10(abs(H2)),'r');
 grid on;
 legend('H1','H2');
-xlabel('Tíðni[Hz]')
+xlabel('Tíðni [*pi rad/sample]')
 ylabel('Útslag[dB]')
 % ----------- Phase response -----------
 subplot(2,1,2)
-[phiFIR,w1_p] = phasez(b1,a1,nfft); 
-[phiIIR,w2_p] = phasez(b2,a2,nfft); 
+[phiFIR,w1_p] = phasez(b1,a1); 
+[phiIIR,w2_p] = phasez(b2,a2); 
 
-plot(fs*w1_p/(2*pi),unwrap(phiFIR),'b');
+plot(w1_p/pi,unwrap(phiFIR),'b');
 hold on
-plot(fs*w2_p/(2*pi),unwrap(phiIIR),'r');
+plot(w2_p/pi,unwrap(phiIIR),'r');
 legend('H1','H2');
-xlabel('Tíðni[Hz]')
+xlabel('Tíðni [*pi rad/sample]')
 ylabel('Radíanar')
 grid on
 
@@ -44,7 +53,7 @@ grid on
 z1 = roots(b1); %Núll H1(z)
 p1 = roots(a1); %Skaut H1(z)
 ucirc = exp(1j*(0:0.001:(2*pi))); % Einingahringurinn
-figure
+roots1 = figure('Name','Rætur fyrir IIR síuna');
 plot(real(z1),imag(z1),'or','linewidth',2,'markersize',10); hold on;
 plot(real(p1),imag(p1),'xb','linewidth',2,'markersize',10);
 plot(real(ucirc), imag(ucirc),'k--','linewidth',2);
@@ -60,7 +69,7 @@ grid on;
 z2 = roots(b2); %Núll H2(z)
 p2 = roots(a2); %Skaut H2(z)
 ucirc = exp(1j*(0:0.001:(2*pi))); % Einingahringurinn
-figure
+roots2 = figure('Name','Rætur fyrir IIR síuna');
 plot(real(z2),imag(z2),'or','linewidth',2,'markersize',10); hold on;
 %close all; plot(real(p2),imag(p1),'xb','linewidth',2,'markersize',10);
 plot(real(ucirc), imag(ucirc),'k--','linewidth',2);
@@ -71,6 +80,9 @@ ylabel('Imaginary part');
 title('Pole-zero plot for the FIR filter');
 legend('Zeros','Unit circle');
 grid on;
+
+
+
 
 
 %% Umræða

@@ -43,12 +43,13 @@ title('x[n] = x1[n] + x2[n] + x3[n]');
 xlabel('Stak [n]');
 ylabel('Útslag');
 
+
 % --------- Liður 4. ---------
 
 figure('name','Liður 4: Fourier vörpun merkjanna','NumberTitle','off')
 lenn = length(n);
 subplot(3,1,1)
-stem((0:lenn-1)/(lenn/fs),20*log10(abs(fft(xn1))));
+plot((0:lenn-1)/(lenn/fs),fft(xn1));
 title('F[x1]');
 xlabel('Tíðni [Hz]');
 ylabel('Gildi');

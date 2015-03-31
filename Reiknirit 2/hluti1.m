@@ -7,7 +7,7 @@ fasi = [0 0 0];     % Fasar 1 til 3
 
 fs = 8000; %Söfnunartíðni skilgreind sem 8000 Hz
 Ts = 1/fs; %Þetta er óþarfi.. bara til að sýna Ts
-n = -400:1:400;
+n = -400:0.65:400;
 t = n/fs;% = n*Ts
 
 %% --------- Liður 1 - 4 ---------
