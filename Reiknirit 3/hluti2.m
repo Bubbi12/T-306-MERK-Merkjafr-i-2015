@@ -51,20 +51,27 @@ fmax = (1:bits);
 for m = 1:bits
     fmax(m) = findFrequencyPeak(Rx(nn(m)),fs,K);
 end
-fmax
+
 % c = [0 zeros(1,bits-1)+bits];
 % fmax = fmax+cumsum(c);
 
 % ------------- 2.3.3 Teiknum -------------
-stem(1:bits,fmax)
+stem(1:bits,fmax);
 % ------------- 2.4 Afkóðun -------------
-signal_bits = fmax*(fmax<1300 && fmax>1100); %ones og zeros.. nú bara lesa út úr þessu með eh
-    
-    
+signal_bits = (fmax<1300 & fmax>1100); %ones og zeros.. nú bara lesa út úr þessu með eh
+
 % ------------- 2.4.1 Finnum bitastrauminn -------------
 
 % ------------- 2.3.2 Bitum breytt í tákn -------------
 
+letter = [' ' 'A' 'K' 'D' 'E' 'G' 'H' 'I' 'L' 'M' 'N' 'O' 'R' 'S' 'T' 'U'];
+for i = 1:symbols
+   anss = find(bin2dec(num2str(signal_bits((i-1)*4+1:(i*4))))+1 == 1:16);
+   lett = letter(anss);
+   fprintf('%c',lett)
+end
+fprintf('\n')
+    
 
 
 
